@@ -1,0 +1,22 @@
+#Pulling latest alpine os image from docker hub
+FROM alpine:latest
+
+MAINTAINER Srikanth Karanki <karanki.srikanthk@gmail.com>
+
+#Installing required os level packages
+RUN apk update && apk add cowsay fortune netcat-openbsd --update-cache \
+        --repository https://alpine.global.ssl.fastly.net/alpine/edge/community \
+        --repository https://alpine.global.ssl.fastly.net/alpine/edge/main \
+        --repository https://dl-3.alpinelinux.org/alpine/edge/testing
+
+#Creating application folder inside container
+RUN mkdir /opt/wisecow
+
+#Copying wisecow.sh into the container
+COPY ./wisecow.sh /opt/wisecow
+
+#EXPOSING default port 4499
+EXPOSE 4499
+
+#Executing wisecow.sh to start the service
+CMD ["sh","/opt/wisecow/wisecow.sh"]
