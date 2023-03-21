@@ -19,7 +19,7 @@ jobs:
       run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
 
     - name: Build wisecow alpine image
-      run: docker build . --file Dockerfile_alpine --tag karanki12/wisecow:alpine 
+      run: docker build . -f Dockerfile_alpine -t karanki12/wisecow:alpine 
 
     - name: Push wisecow alpine image to dockerhub. 
       run: docker push karanki12/wisecow:alpine 
