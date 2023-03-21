@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Dockerhub login 
-      run: echo ${{ secret.DOCKERHUB_PASSWORD }} | docker login -u ${{ secret.DOCKERHUB_USERNAME }} --password-stdin
+      run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
  
 
     - name: Build wisecow alpine image
