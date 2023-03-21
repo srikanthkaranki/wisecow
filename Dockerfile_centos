@@ -1,0 +1,19 @@
+#Pulling latest alpine os image from docker hub
+FROM centos:6.6
+
+MAINTAINER Srikanth Karanki <karanki.srikanthk@gmail.com>
+
+#Installing required os level packages
+RUN sed -i 's/https/http/g' /etc/yum.repos.d/epel.repo && yum update -y && yum makecache -y && yum -y install cowsay
+
+#Creating application folder inside container
+RUN mkdir /opt/wisecow
+
+#Copying wisecow.sh into the container
+COPY ./wisecow.sh /opt/wisecow
+
+#EXPOSING default port 4499
+EXPOSE 4499
+
+#Executing wisecow.sh to start the service
+CMD ["sh","/opt/wisecow/wisecow.sh"]
