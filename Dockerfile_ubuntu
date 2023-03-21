@@ -12,7 +12,7 @@ RUN mkdir /opt/wisecow
 #Copying wisecow file from local machine to the container
 COPY ./wisecow.sh /opt/wisecow
 
-#Providing execute permissions to wisecow.sh and creating link file for cowsay and fortune in /usr/bin
+#creating link file for cowsay and fortune in /usr/bin to make those available in path variable.
 RUN ln -s /usr/games/cowsay /usr/bin/cowsay ; ln -s /usr/games/fortune /usr/bin/fortune
 
 #EXPOSING default port 4499
