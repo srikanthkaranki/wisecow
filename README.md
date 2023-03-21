@@ -34,11 +34,11 @@ command:- docker build -t wisecow:alpine -f Dockerfile_alpine .
 
 1. To start ubuntu wisecow container, execute below command
 
-command:- docker run -d -p <hostport>:<container port> --name wisecow_ubuntu wisecow:ubuntu
+command:- docker run -d -p hostport:containerport --name wisecow_ubuntu wisecow:ubuntu
 
 2. To start alpine wisecow container, execute below command
 
-command:- docker run -d -p <hostport>:<container port> --name wisecow_alpine wisecow:alpine
+command:- docker run -d -p hostport:containerport --name wisecow_alpine wisecow:alpine
 
 # Why do we need to create multiple docker images on different os
 
