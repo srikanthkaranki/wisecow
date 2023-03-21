@@ -3,8 +3,6 @@ name: Docker Image CI
 on:
   push:
     branches: "**"
-  pull_request:
-    branches: "**"
 
 jobs:
 
@@ -14,15 +12,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
     - name: Dockerhub login 
       run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
- 
 
     - name: Build wisecow alpine image
       run: docker build . --file Dockerfile_alpine --tag karanki12/wisecow:alpine 
+
     - name: Push wisecow alpine image to dockerhub. 
       run: docker push karanki12/wisecow:alpine 
+
     - name: Build wisecow ubuntu image 
       run: docker build . -f Dockerfile_ubuntu -t karanki12/wisecow:ubuntu 
+
     - name: Push wisecow ubuntu image to dockerhub 
       run: docker push karanki12/wisecow:ubuntu 
